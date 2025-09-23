@@ -12,8 +12,9 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'Gabriel Negron - Technical Product Manager',
-  description: 'Technical Product Manager with 16 years of experience - I build products by writing code, not just specs.',
+  title: 'Gabriel Negron | Technology & Product Leader',
+  description:
+    'Technology and product leader blending engineering rigor, product strategy, and AI-assisted development to deliver meaningful digital experiences.',
 }
 
 export default function RootLayout({
