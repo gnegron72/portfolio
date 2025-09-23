@@ -1,0 +1,29 @@
+<svg width="400" height="500" viewBox="0 0 400 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGradient" x1="50" y1="0" x2="350" y2="500" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1e3a8a" />
+      <stop offset="1" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="frameGradient" x1="0" y1="0" x2="400" y2="500" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#38bdf8" stop-opacity="0.4" />
+      <stop offset="1" stop-color="#6366f1" stop-opacity="0.2" />
+    </linearGradient>
+    <clipPath id="portraitClip">
+      <rect x="32" y="32" width="336" height="436" rx="48" ry="48" />
+    </clipPath>
+  </defs>
+  <rect width="400" height="500" rx="64" fill="url(#bgGradient)" />
+  <rect x="16" y="16" width="368" height="468" rx="56" stroke="url(#frameGradient)" stroke-width="4" fill="none" />
+  <g clip-path="url(#portraitClip)">
+    <rect x="32" y="32" width="336" height="436" fill="#0f172a" opacity="0.35" />
+    <circle cx="200" cy="190" r="96" fill="#1e293b" />
+    <path d="M104 408c0-64 48-112 96-112s96 48 96 112" fill="#1e293b" />
+    <path d="M96 416h208c22 0 40 18 40 40H56c0-22 18-40 40-40z" fill="#1f2937" opacity="0.65" />
+  </g>
+  <text x="50%" y="440" text-anchor="middle" fill="#cbd5f5" font-family="'Inter', 'Segoe UI', sans-serif" font-size="20" font-weight="600" letter-spacing="0.08em">
+    EXECUTIVE PORTRAIT
+  </text>
+  <text x="50%" y="466" text-anchor="middle" fill="#94a3b8" font-family="'Inter', 'Segoe UI', sans-serif" font-size="14" letter-spacing="0.2em">
+    PLACEHOLDER
+  </text>
+</svg>

@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 
 const highlights = [
@@ -28,7 +29,7 @@ export default function HeroSection() {
               <p className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm uppercase tracking-wider text-blue-200">
                 Gabriel Negron
               </p>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-slate-100">
                 Technology &amp; Product Leader
                 <span className="block text-blue-300">
                   AI-Assisted Development Enthusiast
@@ -70,21 +71,15 @@ export default function HeroSection() {
 
           <div className="relative">
             <div className="group relative mx-auto w-full max-w-sm overflow-hidden rounded-[3rem] border border-white/20 bg-white/5 p-6 shadow-2xl">
-              <div className="aspect-[4/5] w-full rounded-[2.5rem] bg-gradient-to-br from-blue-500/30 via-purple-500/30 to-cyan-500/30 backdrop-blur flex items-center justify-center">
-                <div className="text-center text-sm text-slate-100/80">
-                  <p className="text-lg font-semibold text-white">Add executive portrait</p>
-                  <p className="mt-3 text-slate-200/80">
-                    Placeholder for a recent photo or illustration celebrating emerging technology.
-                  </p>
-                </div>
-              </div>
-              <div className="absolute inset-x-10 -bottom-10 rounded-3xl bg-blue-500/40 px-6 py-5 text-left text-sm text-white shadow-lg backdrop-blur">
-                <p className="font-semibold uppercase tracking-wide text-xs text-blue-100/80">
-                  Mission Statement
-                </p>
-                <p className="mt-2 leading-relaxed text-blue-50">
-                  Build resilient, insight-driven products that uplift teams and customers through thoughtful automation.
-                </p>
+              <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[2.5rem]">
+                <Image
+                  src="/images/executive-portrait-placeholder.svg"
+                  alt="Stylized executive portrait placeholder"
+                  fill
+                  sizes="(min-width: 1024px) 320px, (min-width: 640px) 280px, 90vw"
+                  className="object-cover"
+                  priority
+                />
               </div>
             </div>
           </div>
