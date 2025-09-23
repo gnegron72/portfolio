@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const navigation = [
   { name: 'About', href: '#about' },
@@ -13,12 +13,77 @@ const navigation = [
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [activeSection, setActiveSection] = useState('')
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen((open) => !open)
   }
 
   const closeMobileMenu = () => setIsMobileMenuOpen(false)
+
+  useEffect(() => {
+    const sectionElements = navigation
+      .map((item) => document.getElementById(item.href.replace('#', '')))
+      .filter((section): section is HTMLElement => Boolean(section))
+
+    if (!sectionElements.length) {
+      return
+    }
+
+    let ticking = false
+
+    const updateActiveSection = () => {
+      const scrollPosition = window.scrollY
+      const viewportHeight = window.innerHeight
+      const offset = scrollPosition + viewportHeight * 0.25
+
+      let currentSectionId = ''
+
+      for (const section of sectionElements) {
+        const sectionTop = section.getBoundingClientRect().top + window.scrollY
+
+        if (sectionTop <= offset) {
+          currentSectionId = section.id
+        }
+      }
+
+      setActiveSection((current) =>
+        current === currentSectionId ? current : currentSectionId
+      )
+
+      ticking = false
+    }
+
+    const handleScrollOrResize = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateActiveSection)
+        ticking = true
+      }
+    }
+
+    updateActiveSection()
+
+    window.addEventListener('scroll', handleScrollOrResize, {
+      passive: true,
+    })
+    window.addEventListener('resize', handleScrollOrResize)
+
+    return () => {
+      window.removeEventListener('scroll', handleScrollOrResize)
+      window.removeEventListener('resize', handleScrollOrResize)
+    }
+  }, [])
+
+  const handleDesktopNavigation = (href: string) => {
+    const sectionId = href.replace('#', '')
+    setActiveSection(sectionId)
+  }
+
+  const handleMobileNavigation = (href: string) => {
+    const sectionId = href.replace('#', '')
+    setActiveSection(sectionId)
+    closeMobileMenu()
+  }
 
   return (
     <header className="sticky top-0 z-40 bg-slate-50/80 backdrop-blur border-b border-slate-200">
@@ -39,24 +104,28 @@ export default function Header() {
           </Link>
 
           <div className="flex items-center gap-6">
-            <nav className="hidden lg:flex items-center gap-6 text-sm font-medium text-slate-600">
-              {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className="transition-colors hover:text-slate-900"
-                >
-                  {item.name}
-                </Link>
-              ))}
-            </nav>
+            <nav className="hidden lg:flex items-center gap-6 text-sm font-medium">
+              {navigation.map((item) => {
+                const sectionId = item.href.replace('#', '')
+                const isActive = activeSection === sectionId
 
-            <Link
-              href="#contact"
-              className="hidden lg:inline-flex items-center rounded-full bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow hover:bg-blue-500"
-            >
-              Let&apos;s talk
-            </Link>
+                return (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className={`inline-flex items-center rounded-full px-3 py-1.5 transition-colors ${
+                      isActive
+                        ? 'bg-blue-600 text-white shadow hover:bg-blue-500'
+                        : 'text-slate-600 hover:text-slate-900'
+                    }`}
+                    aria-current={isActive ? 'page' : undefined}
+                    onClick={() => handleDesktopNavigation(item.href)}
+                  >
+                    {item.name}
+                  </Link>
+                )
+              })}
+            </nav>
 
             <button
               type="button"
@@ -76,23 +145,26 @@ export default function Header() {
       {isMobileMenuOpen && (
         <div className="border-t border-slate-200 bg-white shadow-lg lg:hidden">
           <nav className="space-y-1 px-4 py-4">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className="block rounded-xl px-4 py-3 text-base font-medium text-slate-700 hover:bg-slate-100"
-                onClick={closeMobileMenu}
-              >
-                {item.name}
-              </Link>
-            ))}
-            <Link
-              href="#contact"
-              className="mt-2 block rounded-xl bg-blue-600 px-4 py-3 text-center text-base font-semibold text-white hover:bg-blue-500"
-              onClick={closeMobileMenu}
-            >
-              Let&apos;s talk
-            </Link>
+            {navigation.map((item) => {
+              const sectionId = item.href.replace('#', '')
+              const isActive = activeSection === sectionId
+
+              return (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className={`block rounded-xl px-4 py-3 text-base font-medium transition-colors ${
+                    isActive
+                      ? 'bg-blue-600 text-white shadow hover:bg-blue-500'
+                      : 'text-slate-700 hover:bg-slate-100'
+                  }`}
+                  aria-current={isActive ? 'page' : undefined}
+                  onClick={() => handleMobileNavigation(item.href)}
+                >
+                  {item.name}
+                </Link>
+              )
+            })}
           </nav>
         </div>
       )}
