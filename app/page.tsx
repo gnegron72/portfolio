@@ -1,23 +1,26 @@
 import type { Metadata } from 'next'
 import HeroSection from '../components/sections/HeroSection'
-import CaseStudySection from '../components/sections/CaseStudySection'
-import TechnicalDeepDiveSection from '../components/sections/TechnicalDeepDiveSection'
-import SkillsMatrixSection from '../components/sections/SkillsMatrixSection'
-import CallToActionSection from '../components/sections/CallToActionSection'
+import AboutSection from '../components/sections/AboutSection'
+import ExperienceSection from '../components/sections/ExperienceSection'
+import AiProjectsSection from '../components/sections/AiProjectsSection'
+import TechToolsSection from '../components/sections/TechToolsSection'
+import ContactSection from '../components/sections/ContactSection'
 
 export const metadata: Metadata = {
-  title: 'Gabriel Negron - Technical Product Manager Portfolio',
-  description: 'Technical Product Manager with 16 years of experience - I build products by writing code, not just specs.',
+  title: 'Gabriel Negron | Technology & Product Leader',
+  description:
+    'Technology and product leader championing AI-assisted development, cross-functional delivery, and story-driven customer experiences.',
 }
 
 export default function Home() {
   return (
-    <div>
+    <div className="space-y-0">
       <HeroSection />
-      <CaseStudySection />
-      <TechnicalDeepDiveSection />
-      <SkillsMatrixSection />
-      <CallToActionSection />
+      <AboutSection />
+      <ExperienceSection />
+      <AiProjectsSection />
+      <TechToolsSection />
+      <ContactSection />
     </div>
   )
 }
