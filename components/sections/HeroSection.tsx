@@ -3,17 +3,13 @@ import Link from 'next/link'
 
 const highlights = [
   {
-    label: 'Years leading technology teams',
-    value: '16+',
+    label: 'Years in technology',
+    value: '20+',
   },
   {
-    label: 'Industries served',
-    value: 'Telecom, SaaS, Consulting',
-  },
-  {
-    label: 'AI-assisted delivery focus',
-    value: 'Applied AI & ML Platforms',
-  },
+    label: 'Roles held',
+    value: 'Software Engineer, Product Manager, Consulting',
+  }
 ]
 
 export default function HeroSection() {
@@ -22,13 +18,10 @@ export default function HeroSection() {
       id="home"
       className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 lg:py-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="space-y-10">
             <div className="space-y-4">
-              <p className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm uppercase tracking-wider text-blue-200">
-                Gabriel Negron
-              </p>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-slate-100">
                 Technology &amp; Product Leader
                 <span className="block text-blue-300">
@@ -36,7 +29,7 @@ export default function HeroSection() {
                 </span>
               </h1>
               <p className="text-lg text-slate-200 max-w-xl">
-                I guide cross-functional teams to translate complex business problems into elegant, scalable digital products—pairing product vision with modern engineering practices and responsible AI adoption.
+                I guide cross-functional teams to translate complex business problems into elegant, scalable digital products — pairing product vision with modern engineering practices and AI adoption.
               </p>
             </div>
 
@@ -58,7 +51,7 @@ export default function HeroSection() {
                 href="#contact"
                 className="btn btn-primary btn-lg bg-blue-500 border-transparent hover:bg-blue-400 text-white"
               >
-                Schedule a conversation
+                Contact me
               </Link>
               <Link
                 href="#experience"
