@@ -66,8 +66,8 @@ export default function HeroSection() {
             <div className="group relative mx-auto w-full max-w-sm overflow-hidden rounded-[3rem] border border-white/20 bg-white/5 p-6 shadow-2xl">
               <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[2.5rem]">
                 <Image
-                  src="/images/executive-portrait-placeholder.svg"
-                  alt="Stylized executive portrait placeholder"
+                  src="/images/executive-portrait.webp"
+                  alt="Professional executive portrait"
                   fill
                   sizes="(min-width: 1024px) 320px, (min-width: 640px) 280px, 90vw"
                   className="object-cover"
